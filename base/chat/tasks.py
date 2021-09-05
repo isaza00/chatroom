@@ -10,7 +10,6 @@ from .models import Message
 
 
 API_URL = 'https://stooq.com/q/l/?s=stock_symbol.us&f=sd2t2ohlcv&h&e=csv'
-
 ROW = 1
 SYMBOL_COLUMN = 0
 CLOSE_COLUMN = 6
@@ -18,21 +17,21 @@ STOCK_PATTERN = '/stock='
 ERROR_MESSAGE = 'There is no data for requested symbol'
 
 @shared_task
-def send_bot_message(text_message, date):
+def send_bot_message(text_message, date, room_name):
     bot_message = get_bot_message(text_message)
-    print("bot", bot_message)
     if not bot_message:
         return
 
     message = Message(
             user='BOT',
             text_message=bot_message,
-            date=date)
+            date=date,
+            room=room_name)
     message.save()
 
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
-        'chat_room',
+        'chat_%s' % room_name,
         {
             'type': 'chat_message',
             'message': bot_message,
@@ -66,7 +65,6 @@ def get_stock_data(stock_symbol):
         csv_list = list(csv.reader(decoded_content.splitlines(), delimiter=','))
         close = csv_list[ROW][CLOSE_COLUMN]
         symbol = csv_list[ROW][SYMBOL_COLUMN]
-        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXX", type(close))
         try:
             float(close)
             return f'{symbol} quote is ${close} per share'

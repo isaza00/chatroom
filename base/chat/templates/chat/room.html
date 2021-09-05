@@ -26,14 +26,13 @@
         const renderMessage = (messageNumer, date, user, text_message) => {
             const tagToInsert = document.createElement('div')
             tagToInsert.id = `${messageNumber}`
-            const completeMessage = `at ${date} ${user} said: 
+            const completeMessage = `at ${date} <b>${user}</b> said: 
                                      <br> <b>${text_message}<b> <br><br>`
             tagToInsert.innerHTML = completeMessage
             document.querySelector('#chat-log').appendChild(tagToInsert);
             messageNumber -=1;
             return messageNumber
         }
-
         for (let message of messages) {
             messageNumber = renderMessage(
                 messageNumber,

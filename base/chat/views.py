@@ -11,10 +11,10 @@ def index(request):
 
 @login_required(login_url='/user/login')
 def room(request, room_name):
-    messages = reversed(Message.objects.all().order_by('-date')[:50])
+    messages = reversed(Message.objects.filter(room=room_name).order_by('-date')[:50])
     user = request.user.username
     return render(request, 'chat/room.html', {
-        'room_name': ROOM_NAME,
+        'room_name': room_name,
         'messages': serialize('json', messages),
         'user': user
     })

@@ -9,17 +9,18 @@ STOCK_PATTERN = '/stock='
 
 class ChatConsumer(AsyncWebsocketConsumer):
     @database_sync_to_async
-    def create_message(self, text_message, user, date):
+    def create_message(self, text_message, user, date, room_group):
 
         message = Message(
             user=user,
             text_message=text_message,
-            date=date)
+            date=date,
+            room=room_group)
         message.save()
-        messages = Message.objects.all()[0:49]
 
     async def connect(self):
-        self.room_group_name = 'chat_room'
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = 'chat_%s' % self.room_name
 
         # Join room group
         await self.channel_layer.group_add(
@@ -44,7 +45,11 @@ class ChatConsumer(AsyncWebsocketConsumer):
         date = text_data_json['date']
 
         if STOCK_PATTERN not in text_message:
-            await self.create_message(text_message, user, date)
+            await self.create_message(
+                text_message,
+                user,
+                date,
+                self.room_name)
         
             #Send message to room group
             await self.channel_layer.group_send(
@@ -57,7 +62,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                 }
             )
         else:
-            send_bot_message.delay(text_message, date)
+            send_bot_message.delay(text_message, date, self.room_name)
 
     # Receive message from room group
     async def chat_message(self, event):

@@ -5,3 +5,4 @@ class Message(models.Model):
     user = models.CharField(max_length=100, default='')
     text_message = models.TextField()
     date = models.DateTimeField(null=True, default=None)
+    room = models.CharField(max_length=100, default='room')

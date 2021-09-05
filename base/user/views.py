@@ -11,7 +11,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             auth_login(request, user)
-            return redirect('/chat/room')
+            return redirect('/chat')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
@@ -22,12 +22,11 @@ def login(request):
         if form.is_valid():
             user = form.get_user()
             auth_login(request, user)
-            return redirect('/chat/room')
+            return redirect('/chat')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
 
 def logout(request):
-    print("LOGOAOUT")
     auth_logout(request)
     return redirect('/user/login')
