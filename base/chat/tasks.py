@@ -20,6 +20,7 @@ ERROR_MESSAGE = 'There is no data for requested symbol'
 @shared_task
 def send_bot_message(text_message, date):
     bot_message = get_bot_message(text_message)
+    print("bot", bot_message)
     if not bot_message:
         return
 
@@ -65,8 +66,10 @@ def get_stock_data(stock_symbol):
         csv_list = list(csv.reader(decoded_content.splitlines(), delimiter=','))
         close = csv_list[ROW][CLOSE_COLUMN]
         symbol = csv_list[ROW][SYMBOL_COLUMN]
-        message = f'{symbol} quote is ${close} per share'
-        return message
-
+        print("XXXXXXXXXXXXXXXXXXXXXXXXXXXX", type(close))
+        try:
+            float(close)
+            return f'{symbol} quote is ${close} per share'
+        except:
+            return None
     return None
-
