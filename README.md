@@ -167,6 +167,8 @@ It should return >>> {'type': 'TEST'}
 
 
 
+
+
 - Finally, from another terminal you start the server typing:
   python3 manage.py runserver
 
