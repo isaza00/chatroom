@@ -39,6 +39,8 @@ Features:
 Installation
 
 - It needs python 3.8 | 3.9
+
+
 - You should have installed on your local machine redis-server > 5 and
   rabbitMQ > 3.9.5.
   also you could run redis on docker as: docker run -p 6379:6379 -d redis:5
@@ -86,6 +88,7 @@ Installation
   CGroup: /system.slice/redis-server.service
            └─7682 /usr/bin/redis-server 127.0.0.1:6379
 
+
 - To install dependencies you can create a virtual env like this:
     Install VirtulEnv
         Run `pip3 install virtualenv`
@@ -97,8 +100,10 @@ Installation
     Install Dependencies
         Run `pip install -r requirements.txt`
 
+
 - From "base" directory run migrations typing:
     python3 manage.py migrate
+
 
 - Now, let’s make sure that the channel layer can communicate with Redis.
   Open a Django shell and run the following commands from "base" directory:
@@ -117,6 +122,7 @@ Installation
 >>> 
 
 It should return >>> {'type': 'TEST'}
+
 
 - Now, in order for the Bot works, from "base" directory open a new terminal an type:
   celery -A base worker -l info
@@ -160,6 +166,7 @@ It should return >>> {'type': 'TEST'}
 [2021-09-05 23:43:41,518: INFO/ForkPoolWorker-1] Task chat.tasks.send_bot_message[283ac847-1c82-4884-9ecd-117d87f4db3e] succeeded in 1.2835561700048856s: None
 
 
+
 - Finally, from another terminal you start the server typing:
   python3 manage.py runserver
 
@@ -176,7 +183,9 @@ It should return >>> {'type': 'TEST'}
     Quit the server with CONTROL-C.
     
 
+
 - Now you can go type on your navigator http://127.0.0.1:8000/ and use the app. ENJOY.
+
 
 - There are 3 unit test to check bot functions. you can run this tests by running from
   "base" directory:
