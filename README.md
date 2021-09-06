@@ -48,10 +48,15 @@ Installation
   You have to see that it is active and running, like this:
 
   rabbitmq-server.service - RabbitMQ broker
+  
    Loaded: loaded (/lib/systemd/system/rabbitmq-server.service; enabled; vendor preset: enabled)
+   
    Active: active (running) since Sat 2021-09-04 16:27:07 -05; 1 day 1h ago
+   
  Main PID: 1844 (beam.smp)
+ 
     Tasks: 28 (limit: 4915)
+    
    CGroup: /system.slice/rabbitmq-server.service
            ├─1844 /usr/lib/erlang/erts-12.0.3/bin/beam.smp -W w -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -P 1048576 
            ├─2105 erl_child_setup 32768
@@ -64,13 +69,20 @@ Installation
   You have to see that it is active and running, like this:
 
   edis-server.service - Advanced key-value store
+  
    Loaded: loaded (/lib/systemd/system/redis-server.service; disabled; vendor preset: enabled)
+   
    Active: active (running) since Sat 2021-09-04 16:37:53 -05; 1 day 1h ago
+   
      Docs: http://redis.io/documentation,
            man:redis-server(1)
+           
   Process: 7665 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
+  
  Main PID: 7682 (redis-server)
+ 
     Tasks: 5 (limit: 4915)
+    
    CGroup: /system.slice/redis-server.service
            └─7682 /usr/bin/redis-server 127.0.0.1:6379
 
@@ -131,15 +143,22 @@ It should return >>> {'type': 'TEST'}
   . chat.tasks.send_bot_message
 
 [2021-09-05 23:43:39,016: INFO/MainProcess] Connected to amqp://guest:**@127.0.0.1:5672//
+
 [2021-09-05 23:43:39,028: INFO/MainProcess] mingle: searching for neighbors
+
 [2021-09-05 23:43:40,083: INFO/MainProcess] mingle: all alone
+
 [2021-09-05 23:43:40,129: WARNING/MainProcess] /home/norman/jobsity/chatroom/.env/lib/python3.9/site-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
             leak, never use this setting in production environments!
   warnings.warn('''Using settings.DEBUG leads to a memory
+ 
 
 [2021-09-05 23:43:40,129: INFO/MainProcess] celery@norman-dell ready.
+
 [2021-09-05 23:43:40,130: INFO/MainProcess] Task chat.tasks.send_bot_message[283ac847-1c82-4884-9ecd-117d87f4db3e] received
+
 [2021-09-05 23:43:41,518: INFO/ForkPoolWorker-1] Task chat.tasks.send_bot_message[283ac847-1c82-4884-9ecd-117d87f4db3e] succeeded in 1.2835561700048856s: None
+
 
 - Finally, from another terminal you start the server typing:
   python3 manage.py runserver
