@@ -2,6 +2,10 @@ README
 
 Financial chat-bot django app
 
+![image](https://user-images.githubusercontent.com/28491749/132144993-4e8304a9-95dd-4fb6-a92a-6ce5775576f3.png)
+
+
+
 This app allow registered users to create or enter on a chat-room
 and let them chat online and share financial information.
 There is a bot that brings stock quotation with a command like this:
