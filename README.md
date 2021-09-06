@@ -2,7 +2,8 @@ README
 
 Financial chat-bot django app
 
-![image](https://user-images.githubusercontent.com/28491749/132144954-dacff159-e545-4112-b085-71fb51e734e0.png)
+![image](https://user-images.githubusercontent.com/28491749/132144993-4e8304a9-95dd-4fb6-a92a-6ce5775576f3.png)
+
 
 
 This app allow registered users to create or enter on a chat-room
