@@ -1,4 +1,4 @@
-README
+README (this file is better seen as a RAW file, you could click this "RAW" button above this window on the right side)
 
 Financial chat-bot django app
 
@@ -34,7 +34,7 @@ Features:
 - Messages are stored on DataBase, with date, user, text message and room.
 
 
-Instalation
+Installation
 
 - It needs python 3.8 | 3.9
 - You should have installed on your local machine redis-server > 5 and
