@@ -22,16 +22,17 @@ the Bot will post this:
 
 Features:
 
-- Users can Sign up, Login and Logout.
-- Registers users can enter on an existing chat-room or create one typing
-  the name of the chat-room desired.
-- Comunication on chat room is real-time.
-- Messages are stored on DataBase, with date, user, text message and room.
 - Bot is handle with a worker using Celery (Celery is a task queue/job),
   and It uses RabbitMQ as its message Broker. This improves its performance.
 - For real-time asyncronous comunication this app uses Channels library 
   which supports asyncronous comunication through web-sockets. Channels
   is set-up to use redis as its comunication broker and channel layer.
+- Users can Sign up, Login and Logout.
+- Registers users can enter on an existing chat-room or create one, typing
+  the name of the chat-room desired.
+- Comunication on chat room is real-time.
+- Messages are stored on DataBase, with date, user, text message and room.
+
 
 Instalation
 
