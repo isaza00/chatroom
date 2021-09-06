@@ -141,4 +141,10 @@ It should return >>> {'type': 'TEST'}
 
 - Now you can go type on your navigator http://127.0.0.1:8000/ and use the app. ENJOY.
 
+- There are 3 unit test to check bot functions. you can run this tests by running from
+  "base" directory:
+
+    python3 manage.py test chat
+
+
 Creator: Norman Isaza
