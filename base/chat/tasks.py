@@ -68,7 +68,8 @@ def get_stock_data(stock_symbol):
     response = requests.get(api_url)
     if response.status_code == 200:
         decoded_content = response.content.decode('utf-8')
-        csv_list = list(csv.reader(decoded_content.splitlines(), delimiter=','))
+        csv_list = list(csv.reader(
+            decoded_content.splitlines(), delimiter=','))
         close = csv_list[ROW][CLOSE_COLUMN]
         symbol = csv_list[ROW][SYMBOL_COLUMN]
         try:
