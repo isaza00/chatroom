@@ -18,6 +18,8 @@ ERROR_MESSAGE = 'There is no data for requested symbol'
 
 @shared_task
 def send_bot_message(text_message, date, room_name):
+    """ Process bot message, save it to db and send it to group """
+
     bot_message = get_bot_message(text_message)
     if not bot_message:
         return
@@ -41,6 +43,8 @@ def send_bot_message(text_message, date, room_name):
     )
 
 def get_bot_message(text_message):
+    """ Extract symbol from message and gets data """
+
     stock_symbol = None
     m = None
     bot_message = None
@@ -58,6 +62,8 @@ def get_bot_message(text_message):
     return bot_message
 
 def get_stock_data(stock_symbol):
+    """ Make the API call and process data """
+
     api_url = API_URL.replace('stock_symbol', stock_symbol)
     response = requests.get(api_url)
     if response.status_code == 200:
