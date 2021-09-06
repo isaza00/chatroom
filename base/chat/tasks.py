@@ -9,7 +9,7 @@ from asgiref.sync import async_to_sync
 from .models import Message
 
 
-API_URL = 'https://stooq.com/q/l/?s=stock_symbol.us&f=sd2t2ohlcv&h&e=csv'
+API_URL = 'https://stooq.com/q/l/?s=stock_symbol&f=sd2t2ohlcv&h&e=csv'
 ROW = 1
 SYMBOL_COLUMN = 0
 CLOSE_COLUMN = 6
@@ -49,7 +49,7 @@ def get_bot_message(text_message):
     m = None
     bot_message = None
     
-    m = re.search(f'^{STOCK_PATTERN}(\w+)', text_message)
+    m = re.search(f'^{STOCK_PATTERN}(\w+\.?\w+)', text_message)
     if m:
         stock_symbol = m.group(1)
     else:
