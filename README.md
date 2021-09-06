@@ -53,9 +53,9 @@ Installation
    
    Active: active (running) since Sat 2021-09-04 16:27:07 -05; 1 day 1h ago
    
- Main PID: 1844 (beam.smp)
+   Main PID: 1844 (beam.smp)
  
-    Tasks: 28 (limit: 4915)
+   Tasks: 28 (limit: 4915)
     
    CGroup: /system.slice/rabbitmq-server.service
            ├─1844 /usr/lib/erlang/erts-12.0.3/bin/beam.smp -W w -MBas ageffcbf -MHas ageffcbf -MBlmbcs 512 -MHlmbcs 512 -MMmcs 30 -P 1048576 
@@ -79,11 +79,11 @@ Installation
            
   Process: 7665 ExecStart=/usr/bin/redis-server /etc/redis/redis.conf (code=exited, status=0/SUCCESS)
   
- Main PID: 7682 (redis-server)
+  Main PID: 7682 (redis-server)
  
-    Tasks: 5 (limit: 4915)
+  Tasks: 5 (limit: 4915)
     
-   CGroup: /system.slice/redis-server.service
+  CGroup: /system.slice/redis-server.service
            └─7682 /usr/bin/redis-server 127.0.0.1:6379
 
 - To install dependencies you can create a virtual env like this:
@@ -166,10 +166,15 @@ It should return >>> {'type': 'TEST'}
   you will see:
 
     System check identified no issues (0 silenced).
+    
     September 05, 2021 - 23:45:26
+    
     Django version 3.2.7, using settings 'base.settings'
+    
     Starting ASGI/Channels version 3.0.1 development server at http://127.0.0.1:8000/
+    
     Quit the server with CONTROL-C.
+    
 
 - Now you can go type on your navigator http://127.0.0.1:8000/ and use the app. ENJOY.
 
