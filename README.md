@@ -1,4 +1,6 @@
-README (this file is better seen as a RAW file, you could click this "RAW" button above this window on the right side)
+README 
+
+(this file is better seen as a RAW file, you could click this "RAW" button above this window on the right side)
 
 Financial chat-bot django app
 
