@@ -92,11 +92,17 @@ Installation
   Open a Django shell and run the following commands from "base" directory:
 
 >>> python3 manage.py shell
+>>> 
 >>> import channels.layers
+>>> 
 >>> channel_layer = channels.layers.get_channel_layer()
+>>> 
 >>> from asgiref.sync import async_to_sync
+>>> 
 >>> async_to_sync(channel_layer.send)('test_channel', {'type': 'TEST'})
+>>> 
 >>> async_to_sync(channel_layer.receive)('test_channel')
+>>> 
 
 It should return >>> {'type': 'TEST'}
 
